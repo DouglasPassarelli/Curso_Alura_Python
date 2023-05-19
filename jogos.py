@@ -1,5 +1,5 @@
-import forca
-import adivinhacao
+from Avançando_na_Linguagem import forca
+from Iniciando_na_Linguagem import adivinhacao
 
 
 def escolhe_jogo():
