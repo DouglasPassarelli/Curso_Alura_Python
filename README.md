@@ -18,5 +18,7 @@
   
   ### **OBS:** O codigo Jogos.py servirá como uma sala de jogos, onde voce poderá acessar todos os jogos criados!  </br>
   **Link do Codigo:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/jogos.py>
+  
+  ### **PS:** Incrementarei funcionalidades novas para os projetos sempre que possivel, para deixar os projetos mais completos.
  
 
