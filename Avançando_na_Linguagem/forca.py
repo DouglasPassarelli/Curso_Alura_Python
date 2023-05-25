@@ -7,11 +7,13 @@ def jogar():
 
     def letras_disponiveis(list, indece):
         """print(*list)"""
-        i = list.index(indece)
-        list[i] = '*'
-        return list
-
-
+        if indece in list:
+            i = list.index(indece)
+            list[i] = '*'
+            print(f'Letras Disponiveis:', *list)
+        else:
+            print('Esta letra ja foi selecionada, Por favor digite outra!')
+            print(f'Letras Disponiveis:', *list)
 
 
     menu('Bem vindo ao jogo da forca!')
@@ -24,18 +26,19 @@ def jogar():
     acertou = False
     enforcou = False
 
-    """print(*letras_disponiveis)"""
+
     print('Letras disponiveis:', *letras)
-    print(*letras_acertadas)
+    print('Palavra-Chave:', *letras_acertadas)
+
+
     while not acertou and not enforcou:
         chute = input('Qual a letra? ').strip().upper()
-        disponiveis = letras_disponiveis(letras, chute)
-        print('Letras disponiveis:', *disponiveis)
+        letras_disponiveis(letras, chute)
         for index, letra in enumerate(palavra_secreta):
             if chute == letra.upper():
                 letras_acertadas[index] = letra
+        print('Palavra-chave:', *letras_acertadas)
 
-        print(*letras_acertadas)
 
     print('Fim do Jogo')
 
