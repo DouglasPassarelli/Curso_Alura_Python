@@ -1,28 +1,34 @@
 def jogar():
+
     def linhas(tam=27):
         print('*' * tam)
 
-
-    def menu(msg, tam=0):
+    def menu_jogo(msg, palavra, disponiveis, acertadas, tam=0):
         tam = len(msg)
         print('*' * tam)
         print(msg)
         print('*' * tam)
+        print(f'A Palavra chave tem {len(palavra)} letras.')
+        print('Letras disponiveis:', *disponiveis)
+        print('Palavra-Chave:', *acertadas)
+        linhas()
 
-    def letras_disponiveis(list, indece):
-        if indece in list:
-            i = list.index(indece)
-            list[i] = '*'
-            print(f'Letras Disponiveis:', *list)
-        else:
-            print('Esta letra ja foi selecionada, Por favor digite outra!')
-            print(f'Letras Disponiveis:', *list)
+    def teste_letras_disponiveis(palpite, disponiveis):
+        clone = disponiveis.copy()
+        for index, letra in enumerate(disponiveis):
+            if palpite == letra.upper():
+                clone[index] = '*'
+        return clone
 
-    menu('Bem vindo ao jogo da forca!')
+    def teste_jogo(palavra, palpite, acertos):
+        for index, letra in enumerate(palavra):
+            if palpite == letra.upper():
+                letras_acertadas[index] = letra
+        return acertos
 
     letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
               'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-              'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Z']
+              'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Z', 'Ç']
     palavra_secreta = "maça".upper()
     letras_acertadas = ['_' for letra in palavra_secreta]
     acertou = False
@@ -30,26 +36,25 @@ def jogar():
     tentativa = 6
     rodadas = 0
 
-    print(f'A Palavra chave tem {len(palavra_secreta)} letras.')
-    print('Letras disponiveis:', *letras)
-    print('Palavra-Chave:', *letras_acertadas)
-    linhas()
-
+    menu_jogo('Bem vindo ao jogo da forca!', palavra_secreta, letras, letras_acertadas)
 
     while not acertou and not enforcou:
         chute = input('Qual a letra? ').strip().upper()
-        letras_disponiveis(letras, chute)
-        if chute in palavra_secreta:
+        comparacao = chute
+        if chute in palavra_secreta and chute in letras:
             print('Voce acertou!!!')
-            for index, letra in enumerate(palavra_secreta):
-                if chute == letra.upper():
-                    letras_acertadas[index] = letra
-            print(f'Ainda restam {letras_acertadas.count("_")} letras')
+            letras_acertadas = teste_jogo(palavra_secreta, chute, letras_acertadas)
+            print(f'Ainda restam {letras_acertadas.count("_")} letra(s)')
         else:
-            tentativa -= 1
-            print(f'Voce errou, ainda restam {tentativa} tentativas!')
+            if comparacao not in letras:
+                print('Esta letra não esta disponivel pois ja foi escolhida, Por favor digite outra!')
+            else:
+                tentativa -= 1
+                print(f'Voce errou, ainda restam {tentativa} tentativas!')
 
+        letras = teste_letras_disponiveis(chute, letras)
         print('Palavra-chave:', *letras_acertadas)
+        print('Letras disponiveis:', *letras)
         rodadas += 1
         linhas()
         acertou = '_' not in letras_acertadas
@@ -63,7 +68,6 @@ def jogar():
         print('Voce perdeu, Mais sorte da proxima veiz!')
         print(f'A palavra chave era {palavra_secreta}')
         print('Ate a proxima!')
-
 
     print('Fim do Jogo')
 
