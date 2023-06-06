@@ -1,16 +1,16 @@
-
 from random import randrange
 
 
 def jogar():
-
-    arquivo = 'palavras.txt'
-    if not arqexiste(arquivo):
-        arquivo = criararq(arquivo)
+    cor = 'Cor.txt'
+    profissao = 'profissões.txt'
+    objeto = 'Objetos.txt'
+    frutas = 'frutas.txt'
 
     letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
               'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
               'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    arquivo = gerar_arquivo(cor, profissao, objeto, frutas)
     palavra_secreta = gerando_palavra_secreta(arquivo)
     letras_acertadas = ['_' for letra in palavra_secreta]
     acertou = False
@@ -18,7 +18,8 @@ def jogar():
     tentativa = 0
     rodadas = 0
 
-    menu_jogo('Bem vindo ao jogo da forca!', palavra_secreta, letras, letras_acertadas)
+    dica = gerar_dica(cor, profissao, objeto, frutas, arquivo)
+    menu_jogo('Bem vindo ao jogo da forca!', palavra_secreta, letras, letras_acertadas, dica)
 
     while not acertou and not enforcou:
 
@@ -31,7 +32,7 @@ def jogar():
             print(f'Ainda restam {letras_acertadas.count("_")} letra(s)')
         else:
             if comparacao not in letras:
-                print('Esta letra não esta disponivel pois ja foi escolhida, Por favor digite outra!')
+                print('Esta letra não esta disponivel, Por favor digite outra!')
             else:
                 tentativa += 1
                 desenha_forca(tentativa)
@@ -56,11 +57,12 @@ def linhas(tam=27):
     print('*' * tam)
 
 
-def menu_jogo(msg, palavra, disponiveis, acertadas, tam=0):
+def menu_jogo(msg, palavra, disponiveis, acertadas, dica, tam=0):
     tam = len(msg)
     print('*' * tam)
     print(msg)
     print('*' * tam)
+    print(f'Dica:{dica}')
     print(f'A Palavra chave tem {len(palavra)} letras.')
     print('Letras disponiveis:', *disponiveis)
     print('Palavra-Chave:', *acertadas)
@@ -82,26 +84,6 @@ def teste_jogo(palavra, palpite, acertos):
     return acertos
 
 
-def arqexiste(arq):
-    try:
-        arq = open(arq, 'rt')
-        arq.close()
-    except FileNotFoundError:
-        return False
-    else:
-        return True
-
-
-def criararq(arq):
-    try:
-        arq = open(arq, 'wt+')
-        arq.close()
-    except:
-        print('Houve um erro ao criar o arquivo')
-    else:
-        return arq
-
-
 def gerando_palavra_secreta(arq):
     palavras = []
     with open(arq) as arq:
@@ -109,6 +91,23 @@ def gerando_palavra_secreta(arq):
             palavras.append(linha.strip().upper())
         numero = randrange(0, len(palavras))
     return palavras[numero]
+
+
+def gerar_arquivo(cor, profissao, objeto, frutas):
+    arq = [cor, profissao, objeto, frutas]
+    numero = randrange(0, len(arq))
+    return arq[numero]
+
+
+def gerar_dica(cor, profissao, objeto, frutas, arquivo):
+    if arquivo == cor:
+        return 'Cor'
+    elif arquivo == profissao:
+        return 'Profissão'
+    elif arquivo == frutas:
+        return 'Frutas'
+    else:
+        return 'Objeto'
 
 
 def imprime_mensagem_ganhador(rodadas, palavra_secreta):
