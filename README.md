@@ -14,9 +14,17 @@
 * **Curso 2** - Python: Avançado na Linguagem  </br>
   **Projeto:** Jogo da Forca  </br>
   **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Linguagem/forca.py>  </br>
-  **Descrição:** Projeto em Andamento  </br>
+  **Descrição:** Um jogo classico de forca onde voce terá que adivinhar qual palavra é atravez de uma dica, onde voce tera 7 tentativas para poder acertar, sendo um objeto, cor, profissao ou fruta, o codigo usa arquivos para obter a palavra randonizando de forma aleatoria tanto a dica como a palavra, ao acertar a palavra voce ganhará o jogo. </br>
+  </br>
   
-  ### **OBS:** O codigo Jogos.py servirá como uma sala de jogos, onde voce poderá acessar todos os jogos criados!  </br>
+* **Curso 3** - Python: Entendendo a Orientação a Objetos </br>
+  **Projeto:** Conta Bancaria </br>
+  **Link do Codigo do Projeto** <>  </br>
+  **Descrição:** Em andamento </br>
+  </br>
+
+
+### **OBS:** O codigo Jogos.py servirá como uma sala de jogos, onde voce poderá acessar todos os jogos criados!  </br>
   **Link do Codigo:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/jogos.py>
   
   ### **PS:** Incrementarei funcionalidades novas para os projetos sempre que possivel, para deixar os projetos mais completos.
