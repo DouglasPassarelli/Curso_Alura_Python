@@ -19,7 +19,7 @@
   
 * **Curso 3** - Python: Entendendo a Orientação a Objetos </br>
   **Projeto:** Conta Bancaria </br>
-  **Link do Codigo do Projeto** <>  </br>
+  **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Entendendo_a_Orientação_a_objetos/Conta.py>  </br>
   **Descrição:** Em andamento </br>
   </br>
 
