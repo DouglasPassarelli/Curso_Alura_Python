@@ -1,3 +1,10 @@
+"""
+Refatoramento a fazer
+* Criar função de criar contas
+* Crias funções estaticas
+"""
+
+
 from time import sleep
 
 
@@ -6,6 +13,7 @@ def menu(msg, lista, tam=0):
     sleep(2)
     print('*' * tam)
     print(msg)
+    print(f'Cod:{Conta.mostrar_codigo_banco()}')
     print('*' * tam)
     for i, c in enumerate(lista):
         print(f'{i + 1} - {c}')
@@ -53,6 +61,17 @@ def validacao_valor(msg):
                 continue
 
 
+def conferindo_conta_existente(contas, titular):
+    existe = None
+    for cont in contas:
+        if titular == cont.titular:
+            existe = True
+            break
+        else:
+            existe = False
+    return existe
+
+
 class Conta:
 
     def __init__(self, numero_conta, titular, saldo, limite):
@@ -82,6 +101,19 @@ class Conta:
     def limite(self, novo_limite):
         self.__limite = novo_limite
 
+    @staticmethod
+    def formatar_valor(valor):
+        pass
+
+    @staticmethod
+    def mostrar_codigo_banco():
+        return '002'
+
+    def __pode_sacar(self, valor):
+        return valor <= self.__saldo
+
+    def __pode_depositar(self, valor):
+        return valor < self.__limite
 
     def extrato(self):
         print('Retirando extrato da conta, Aguarde um momento...')
@@ -99,14 +131,14 @@ class Conta:
         print(resultado, end='')
 
     def saca(self, valor):
-        if valor > self.__saldo:
-            print('Saldo da conta insuficiente!')
-        else:
+        if self.__pode_sacar(valor):
             self.__saldo -= valor
             print('Saque feito com sucesso!')
+        else:
+            print('Saldo da conta insuficiente!')
 
     def deposita(self, valor):
-        if valor < self.__limite:
+        if self.__pode_depositar(valor):
             self.__saldo += valor
             print('Deposito feito com sucesso!')
         else:
@@ -134,7 +166,10 @@ conta4 = Conta(234, 'roselaine', 8000, 20000)
 conta5 = Conta(489, 'diego', 10000, 20000)
 conta6 = Conta(321, 'rodrigo', 5600, 20000)
 opc = 0
-contas = [conta1, conta2, conta3, conta4, conta5, conta6]
+
+
+contas = [conta1, conta3, conta4, conta5, conta6]
+
 
 while opc != 5:
     menu('Banco Central', ['Extrato', 'Deposito', 'Saque', 'Transferir', 'Sair'])
@@ -158,10 +193,13 @@ while opc != 5:
             valor = validacao_valor('Digite o valor que queira transferir: R$')
             titular = input('Digite o nome do titular para quem queira transferir: ').title()
             if valor:
-                for cont in contas:
-                    if cont.titular == titular:
-                        conta1.transfere(valor, cont)
-                        break
+                if conferindo_conta_existente(contas, titular):
+                    for cont in contas:
+                        if cont.titular == titular:
+                            conta1.transfere(valor, cont)
+                            break
+                else:
+                    print('Conta nao foi encontrada, Verifique o nome do Titular e tente novamente!')
             else:
                 break
         else:
