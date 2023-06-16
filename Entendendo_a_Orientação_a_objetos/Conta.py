@@ -7,6 +7,9 @@ Refatoramento a fazer
 
 from time import sleep
 
+def linha(tam = 40):
+    print('*' * tam)
+
 
 def menu(msg, lista, tam=0):
     tam += len(msg)
@@ -46,7 +49,7 @@ def opcao_menu(msg):
 def validacao_valor(msg):
     while True:
         try:
-            valor = int(input(msg))
+            valor = float(input(msg))
         except(TypeError, ValueError):
             print('Apenas numeros sao permitidos. Tente Novamente!')
             continue
@@ -72,6 +75,24 @@ def conferindo_conta_existente(contas, titular):
     return existe
 
 
+def boas_vindas(msg, tam=0):
+    tam += len(msg)
+    sleep(2)
+    print('*' * tam)
+    print(msg)
+    print('*' * tam)
+
+
+def acesso_conta(contas):
+    titular = input('Digite o nome do titular para acessar a conta: ').title()
+    agencia = validacao_valor('Digite o numero da conta: ')
+    for cont in contas:
+        if cont.titular == titular and cont.numero_conta == agencia:
+            print('Acessando Conta...')
+            return cont
+            break
+
+
 class Conta:
 
     def __init__(self, numero_conta, titular, saldo, limite):
@@ -91,11 +112,11 @@ class Conta:
 
     @property
     def saldo(self):
-        return f'{self.__saldo:.2f}'
+        return Conta.formatar_valor(float(self.__saldo))
 
     @property
     def limite(self):
-        return f'{self.__limite:.2f}'
+        return Conta.formatar_valor(float(self.__limite))
 
     @limite.setter
     def limite(self, novo_limite):
@@ -103,7 +124,10 @@ class Conta:
 
     @staticmethod
     def formatar_valor(valor):
-        pass
+        if isinstance(valor, float):
+            return 'R${:,.2f}'.format(valor)
+        else:
+            return valor
 
     @staticmethod
     def mostrar_codigo_banco():
@@ -166,45 +190,53 @@ conta4 = Conta(234, 'roselaine', 8000, 20000)
 conta5 = Conta(489, 'diego', 10000, 20000)
 conta6 = Conta(321, 'rodrigo', 5600, 20000)
 opc = 0
+pessoa_fisica = None
 
 
-contas = [conta1, conta3, conta4, conta5, conta6]
+contas = [conta1, conta2, conta3, conta4, conta5, conta6]
 
 
-while opc != 5:
-    menu('Banco Central', ['Extrato', 'Deposito', 'Saque', 'Transferir', 'Sair'])
-    opc = opcao_menu('Digite sua opção: ')
-    if opc:
-        if opc == 1:
-            conta1.extrato()
-        elif opc == 2:
-            valor = validacao_valor('Digite o valor que deseja deposita:  R$')
-            if valor:
-                conta1.deposita(valor)
-            else:
-                break
-        elif opc == 3:
-            valor = validacao_valor('Digite o valor que deseja sacar:  R$')
-            if valor:
-                conta1.saca(valor)
-            else:
-                break
-        elif opc == 4:
-            valor = validacao_valor('Digite o valor que queira transferir: R$')
-            titular = input('Digite o nome do titular para quem queira transferir: ').title()
-            if valor:
-                if conferindo_conta_existente(contas, titular):
-                    for cont in contas:
-                        if cont.titular == titular:
-                            conta1.transfere(valor, cont)
-                            break
-                else:
-                    print('Conta nao foi encontrada, Verifique o nome do Titular e tente novamente!')
-            else:
-                break
-        else:
-            print('Saindo...')
+boas_vindas('Bem vindo ao Banco Central')
+while pessoa_fisica == None:
+    pessoa_fisica = acesso_conta(contas)
+    if pessoa_fisica == None:
+        print('Conta nao existente, Confira os dados e Tente novamente!')
+        linha()
     else:
-        break
+        while opc != 5:
+            menu('Banco Central', ['Extrato', 'Deposito', 'Saque', 'Transferir', 'Sair'])
+            opc = opcao_menu('Digite sua opção: ')
+            if opc:
+                if opc == 1:
+                    pessoa_fisica.extrato()
+                elif opc == 2:
+                    valor = validacao_valor('Digite o valor que deseja deposita:  R$')
+                    if valor:
+                        pessoa_fisica.deposita(valor)
+                    else:
+                        break
+                elif opc == 3:
+                    valor = validacao_valor('Digite o valor que deseja sacar:  R$')
+                    if valor:
+                        pessoa_fisica.saca(valor)
+                    else:
+                        break
+                elif opc == 4:
+                    valor = validacao_valor('Digite o valor que queira transferir: R$')
+                    titular = input('Digite o nome do titular para quem queira transferir: ').title()
+                    if valor:
+                        if conferindo_conta_existente(contas, titular):
+                            for cont in contas:
+                                if cont.titular == titular:
+                                    pessoa_fisica.transfere(valor, cont)
+                                    break
+                        else:
+                            print('Conta nao foi encontrada, Verifique o nome do Titular e tente novamente!')
+                    else:
+                        break
+                else:
+                    print('Saindo...')
+            else:
+                break
 
 
