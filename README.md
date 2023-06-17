@@ -18,9 +18,9 @@
   </br>
   
 * **Curso 3** - Python: Entendendo a Orientação a Objetos </br>
-  **Projeto:** Conta Bancaria </br>
+  **Projeto:** Caixa Eletronico </br>
   **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Entendendo_a_Orientação_a_objetos/Conta.py>  </br>
-  **Descrição:** Em andamento </br>
+  **Descrição:** Criado um simulado de caixa eletronico basico com metodos de sacar, depositar, transferir e retirar o extrado, a partir dos objetos criados e armazenados em uma lista.  </br>
   </br>
 
 
