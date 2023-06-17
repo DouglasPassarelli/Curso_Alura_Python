@@ -1,13 +1,7 @@
-"""
-Refatoramento a fazer
-* Criar função de criar contas
-* Crias funções estaticas
-"""
-
-
 from time import sleep
 
-def linha(tam = 40):
+
+def linha(tam=40):
     print('*' * tam)
 
 
@@ -109,7 +103,6 @@ class Conta:
     def numero_conta(self):
         return self.__numero_conta
 
-
     @property
     def saldo(self):
         return Conta.formatar_valor(float(self.__saldo))
@@ -131,7 +124,7 @@ class Conta:
 
     @staticmethod
     def mostrar_codigo_banco():
-        return '002'
+        return '002'''
 
     def __pode_sacar(self, valor):
         return valor <= self.__saldo
@@ -180,7 +173,7 @@ class Conta:
             else:
                 self.extrato()
                 destino.extrato()
-                print('Deposito feito com sucesso!')
+                print('Transferencia feita com sucesso!')
 
 
 conta1 = Conta(123, 'douglas', 5000, 20000)
