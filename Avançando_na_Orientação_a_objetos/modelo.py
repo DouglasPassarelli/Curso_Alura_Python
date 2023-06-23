@@ -1,67 +1,104 @@
-class Filme:
+class Programa:
+
+    def __init__(self, nome, ano):
+        self._nome = nome
+        self.ano = ano
+        self._likes = 0
+
+    @property
+    def nome(self):
+        return self._nome.title()
+
+    @nome.setter
+    def nome(self, novo_nome):
+        self._nome = novo_nome.title()
+
+    @property
+    def likes(self):
+        return self._likes
+
+    def dar_likes(self):
+        print('Um like foi adicionado!')
+        self._likes += 1
+
+    def __str__(self):
+        resultado = ''
+        conteudo = {'Nome': self.nome,
+                    'Ano': self.ano,
+                    'Likes': self.likes}
+        for chave, valor in conteudo.items():
+            resultado += f'{chave}: {valor}\n'
+        return resultado
+
+
+class Filme(Programa):
 
     def __init__(self, nome, ano, duracao):
-        self.__nome = nome
-        self.ano = ano
+        super().__init__(nome, ano)
         self.duracao = duracao
-        self.__likes = 0
 
-    @property
-    def nome(self):
-        return self.__nome.title()
-
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def dar_likes(self):
-        self.__likes += 1
-
-    def mostrar_filme(self):
-        print(f'Nome: {vingadores.nome} -- ano: {vingadores.ano}  -- '
-              f'duração: {vingadores.duracao} minutos -- likes: {vingadores.likes}')
+    def __str__(self):
+        resultado = ''
+        conteudo = {'Nome': self.nome,
+                    'Ano': self.ano,
+                    'Duração': f"{self.duracao} minutos",
+                    'Likes': self.likes}
+        for chave, valor in conteudo.items():
+            resultado += f'{chave}: {valor}\n'
+        return resultado
 
 
-
-class Serie:
+class Serie(Programa):
 
     def __init__(self, nome, ano, temporadas):
-        self.__nome = nome
-        self.ano = ano
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self.__likes = 0
 
-    @property
-    def nome(self):
-        return self.__nome.title()
-
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def dar_likes(self):
-        self.__likes += 1
-
-    def mostrar_serie(self):
-        print(f'Nome: {supernatural.nome} -- ano: {vingadores.ano}  -- '
-              f'duração: {supernatural.temporadas} temporadas -- likes: {supernatural.likes}')
+    def __str__(self):
+        resultado = ''
+        conteudo = {'Nome': self.nome,
+                    'Ano': self.ano,
+                    'Duração': f"{self.temporadas} temporadas",
+                    'Likes': self.likes}
+        for chave, valor in conteudo.items():
+            resultado += f'{chave}: {valor}\n'
+        return resultado
 
 
+class Playlist(list):
 
+    def __init__(self, nome, programas):
+        self.nome = nome
+        super().__init__(programas)
+
+
+demon_slayer = Filme('Kimetsu no yaba', 2019, 160)
+demon_slayer.dar_likes()
+demon_slayer.dar_likes()
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_likes()
-vingadores.mostrar_filme()
 
+homen_Aranha = Filme('Homem Aranha', 2021, 160)
 
 
 supernatural = Serie('sobrenatural', 2011, 15)
-supernatural.mostrar_serie()
+supernatural.dar_likes()
+
+the_witcher = Serie('The witcher', 2016, 3)
+the_witcher.dar_likes()
+the_witcher.dar_likes()
+the_witcher.dar_likes()
+
+filmes_e_series = [vingadores, supernatural, demon_slayer, the_witcher]
+playlist_melhores_de_todos = Playlist('Melhores de todos', filmes_e_series)
+
+'''for programa in playlist_melhores_de_todos:
+    print(programa, end='')'''
+
+print(f'Tamanho da playlist: {len(playlist_melhores_de_todos)}')
+playlist_melhores_de_todos.append(homen_Aranha)
+
+
+for programa in playlist_melhores_de_todos:
+    print(programa, end='')
