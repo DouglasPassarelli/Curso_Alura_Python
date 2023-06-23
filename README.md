@@ -23,6 +23,12 @@
   **Descrição:** Criado um simulado de caixa eletronico basico com metodos de sacar, depositar, transferir e retirar o extrado, a partir dos objetos criados e armazenados em uma lista.  </br>
   </br>
 
+* **Curso 4** - Python: Avançando na Orientação a Objetos </br>
+  **Projeto:** Em andamento </br>
+  **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Orientação_a_objetos/modelo.py>  </br>
+  **Descrição:** Em andamento  </br>
+  </br>
+
 
  **OBS:** O codigo Jogos.py servirá como uma sala de jogos, onde voce poderá acessar todos os jogos criados! -- Curso 1 e Curso 2  </br>
   **Link do Codigo:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/jogos.py>
