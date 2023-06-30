@@ -30,6 +30,12 @@
   **Cod Exemplo Herança Multipla:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Orientação_a_objetos/HerançaMultipla.py> </br>
   </br>
 
+* **Curso 5** - String em Python: Extraindo informações de uma URL </br>
+  **Projeto:** Em andamento </br>
+  **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/main.py>  </br>
+  **Descrição:** Em andamento </br>
+  </br>
+
 
  **OBS:** O codigo Jogos.py servirá como uma sala de jogos, onde voce poderá acessar todos os jogos criados! -- Curso 1 e Curso 2  </br>
   **Link do Codigo:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/jogos.py>
