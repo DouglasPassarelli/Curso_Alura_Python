@@ -65,11 +65,23 @@ class Serie(Programa):
         return resultado
 
 
-class Playlist(list):
+class Playlist:
 
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    #Transforma um objeto em um iteravel
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    #Devolve o tamanho da lista em um objeto
+    def __len__(self):
+        return len(self._programas)
 
 
 demon_slayer = Filme('Kimetsu no yaba', 2019, 160)
@@ -93,12 +105,9 @@ the_witcher.dar_likes()
 filmes_e_series = [vingadores, supernatural, demon_slayer, the_witcher]
 playlist_melhores_de_todos = Playlist('Melhores de todos', filmes_e_series)
 
-'''for programa in playlist_melhores_de_todos:
-    print(programa, end='')'''
-
 print(f'Tamanho da playlist: {len(playlist_melhores_de_todos)}')
-playlist_melhores_de_todos.append(homen_Aranha)
 
+print(homen_Aranha not in playlist_melhores_de_todos)
 
 for programa in playlist_melhores_de_todos:
     print(programa, end='')
