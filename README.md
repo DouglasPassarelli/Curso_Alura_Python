@@ -24,9 +24,9 @@
   </br>
 
 * **Curso 4** - Python: Avançando na Orientação a Objetos </br>
-  **Projeto:** Em andamento </br>
+  **Projeto:** Playlist de Filmes </br>
   **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Orientação_a_objetos/modelo.py>  </br>
-  **Descrição:** Em andamento  </br>
+  **Descrição:** Aqui neste curso foi elaborado um projeto de playlist de filmes e series usando herança de classes, abordarao tambem um codigo exemplo sobre herança multipla. </br>
   </br>
 
 
