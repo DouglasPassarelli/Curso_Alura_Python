@@ -27,6 +27,13 @@
   **Projeto:** Playlist de Filmes </br>
   **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Orientação_a_objetos/modelo.py>  </br>
   **Descrição:** Aqui neste curso foi elaborado um projeto de playlist de filmes e series usando herança de classes, abordarao tambem um codigo exemplo sobre herança multipla. </br>
+  **Cod Exemplo Herança Multipla:** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/Avançando_na_Orientação_a_objetos/HerançaMultipla.py> </br>
+  </br>
+
+* **Curso 5** - String em Python: Extraindo informações de uma URL </br>
+  **Projeto:** Em andamento </br>
+  **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/main.py>  </br>
+  **Descrição:** Em andamento </br>
   </br>
 
 
