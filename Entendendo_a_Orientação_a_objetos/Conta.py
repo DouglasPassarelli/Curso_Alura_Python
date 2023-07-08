@@ -132,6 +132,10 @@ class Conta:
     def __pode_depositar(self, valor):
         return valor < self.__limite
 
+    def __str__(self):
+        return f'Conta: {self.numero_conta}, Titular: {self.titular}, Saldo: {self.saldo}, Limite: {self.limite}'
+
+
     def extrato(self):
         print('Retirando extrato da conta, Aguarde um momento...')
         sleep(1)
