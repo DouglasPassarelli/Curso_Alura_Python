@@ -1,4 +1,14 @@
-url = 'https://bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real'
+#url = 'https://bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real'
+url = ' '
+
+#Sanitização da URL
+url = url.strip()
+
+
+#Validação da URL
+if url == '':
+    raise ValueError('A URL esta vazia!')
+
 
 #Url Completa
 url_interrogacao = url.find('?')
@@ -36,7 +46,7 @@ for parametros in lista_parametros:
 print('*' * 50)
 
 
-#Exemplo com a função split()
+'''#Exemplo com a função split()
 lista_parametros = url_parametros.split('&')
 dict_parametros = {}
 for parametros in lista_parametros:
@@ -44,5 +54,5 @@ for parametros in lista_parametros:
     dict_parametros[nome] = valor
 
 for chave, valor in dict_parametros.items():
-    print(f'{chave} = {valor}')
+    print(f'{chave} = {valor}')'''
 
