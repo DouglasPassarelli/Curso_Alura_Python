@@ -8,10 +8,13 @@ class ExtratorURL:
         return f'Url Completa: {self.url}'
 
     def sanitiza_url(self, url):
-        return url.strip()
+        if type(url) == str:
+            return url.strip()
+        else:
+            return ''
 
     def valida_url(self):
-        if self.url == '':
+        if not self.url:
             raise ValueError('A URL esta vazia!')
 
     def get_base_url(self):
@@ -35,8 +38,8 @@ class ExtratorURL:
         return valor
 
 
-url = ExtratorURL('https://bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real')
-#url = ExtratorURL('   ')
+#url = ExtratorURL('https://bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real')
+url = ExtratorURL('   ')
 print(url)
 print(url.get_base_url())
 print(url.get_parametros_url())
