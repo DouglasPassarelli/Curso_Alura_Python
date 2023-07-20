@@ -16,6 +16,13 @@ class ExtratorURL:
     def valida_url(self):
         if not self.url:
             raise ValueError('A URL esta vazia!')
+        self.validacao_url_base()
+
+    def validacao_url_base(self):
+        if not str.endswith(self.get_base_url(), 'cambio'):
+            raise ValueError('Pagina na URL nao encontrada!')
+        elif not str.startswith(self.get_base_url(), 'https'):
+            raise ValueError('HTTPS nao encontrado!')
 
     def get_base_url(self):
         url_interrogacao = self.url.find('?')
@@ -38,8 +45,8 @@ class ExtratorURL:
         return valor
 
 
-#url = ExtratorURL('https://bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real')
-url = ExtratorURL('   ')
+url = ExtratorURL('https//bytebank.com/cambio?quantidade=100&moedaDestino=Dolar&moedaOrigem=real')
+#url = ExtratorURL('   ')
 print(url)
 print(url.get_base_url())
 print(url.get_parametros_url())
