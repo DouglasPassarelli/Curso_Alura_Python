@@ -31,9 +31,11 @@
   </br>
 
 * **Curso 5** - String em Python: Extraindo informações de uma URL </br>
-  **Projeto:** Em andamento </br>
-  **Link do Codigo do Projeto** <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/main.py>  </br>
-  **Descrição:** Em andamento </br>
+  **Projeto:** Extrator URL </br>
+  **Link do Codigo do Projeto**  </br>
+  Extrator_URL: <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/ExtratorURL.py>  </br>
+  Main.py: <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/main.py>  </br>
+  **Descrição:** Aqui neste projeto trabalhamos com extração de links URL, pegando a base da url, seus parametros e os valores dos parametros, tbm trabalhamos com validação para saber se a nossa URL é valido usando a biblioteca RE, utilizamos tambem metodos especiais do python. </br>
   </br>
 
 
