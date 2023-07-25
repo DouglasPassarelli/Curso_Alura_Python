@@ -35,7 +35,7 @@
   **Link do Codigo do Projeto**  </br>
   Extrator_URL: <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/ExtratorURL.py>  </br>
   Main.py: <https://github.com/DouglasPassarelli/Curso_Alura_Python/blob/master/String_Em_Python_ExtratorURL/main.py>  </br>
-  **Descrição:** Aqui neste projeto trabalhamos com extração de links URL, pegando a base da url, seus parametros e os valores dos parametros, tbm trabalhamos com validação para saber se a nossa URL é valido usando a biblioteca RE, utilizamos tambem metodos especiais do python. </br>
+  **Descrição:** Aqui neste projeto trabalhamos com extração de links URL, pegando a base da url, seus parametros e os valores dos parametros, tbm trabalhamos com validação para saber se a nossa URL é valido usando a Expressões regulares - RegEX, utilizamos tambem metodos especiais do python. </br>
   </br>
 
 
